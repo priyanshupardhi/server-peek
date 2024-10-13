@@ -1,4 +1,5 @@
 import './App.css'
+import Dashboard from './pages/Dashboard'
 import { LoginForm } from './pages/Login'
 import { SignUpForm } from './pages/Register'
 import { ThemeProvider } from "@/components/theme-provider"
@@ -11,7 +12,7 @@ function App() {
   ])
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <SignUpForm />
+      <Dashboard />
     </ThemeProvider>
   )
 }

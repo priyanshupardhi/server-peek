@@ -8,15 +8,13 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { LogoIcon } from "../components/LogoIcon"
-import { Link } from "lucide-react"
 
 export const description =
   "A sign up form with username, email and password inside a card. There's an option to sign up with GitHub and a link to login if you already have an account"
 
 export function SignUpForm() {
   return (
-    <Card className="mx-auto max-w-sm">
+    <Card className="w-full max-w-sm mx-auto my-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       <CardHeader>
         <a href="#" target="_blank" className="flex flex-col items-center gap-2">
 						<center><img src="src/public/logo.svg" width={40} height={40}/></center>
@@ -30,7 +28,7 @@ export function SignUpForm() {
       <CardContent>
         <div className="grid gap-2">
           <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-left">Email</Label>
             <Input
               id="email"
               type="email"
@@ -39,15 +37,15 @@ export function SignUpForm() {
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="email">Username</Label>
+            <Label htmlFor="username" className="text-left" >Username</Label>
             <Input id="first-name" placeholder="Username" required />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="text-left">Password</Label>
             <Input id="password" placeholder="Password" type="password" />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="password">Confirm Password</Label>
+            <Label htmlFor="password" className="text-left">Confirm Password</Label>
             <Input id="password" placeholder="Confirm Password" type="password" />
           </div>
           <Button type="submit" className="w-full">
