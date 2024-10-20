@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { SignUpForm } from "./pages/Register";
 import { LoginForm } from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Custom404 from "./pages/Error";
 
 
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
     {
         path: '/dashbaord',
         element: <Dashboard/>
+    },
+    {
+        path: '/error',
+        element: <Custom404 statusCode={0}/>
     }
   ]);
 

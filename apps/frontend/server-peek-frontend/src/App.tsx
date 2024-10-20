@@ -1,6 +1,6 @@
 import './App.css'
-import Dashboard from './pages/Dashboard'
 import { ThemeProvider } from "@/components/theme-provider"
+import Dashboard from './pages/Dashboard'
 
 function App() {
   return (
