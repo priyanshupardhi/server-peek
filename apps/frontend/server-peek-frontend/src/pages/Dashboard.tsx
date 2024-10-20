@@ -1,4 +1,5 @@
 import { Bell, MessageCircle, HelpCircle } from 'lucide-react';
+import Avatar from './Avatar';
 
 const Dashboard = () => {
     return (
@@ -22,7 +23,7 @@ const Dashboard = () => {
               <Bell className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer" />
               <MessageCircle className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer" />
               <HelpCircle className="h-5 w-5 text-gray-300 hover:text-white cursor-pointer" />
-              <img className="h-8 w-8 rounded-full" src="src/assets/monkey.jpg" alt="User avatar" />
+              <Avatar></Avatar>
             </div>
           </div>
         </header>
