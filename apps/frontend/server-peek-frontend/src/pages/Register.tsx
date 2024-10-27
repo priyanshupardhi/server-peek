@@ -1,3 +1,4 @@
+import { LogoIcon } from "@/components/LogoIcon"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -18,7 +19,7 @@ export function SignUpForm() {
       <Card className="w-full max-w-sm">
         <CardHeader>
           <a href="#" target="_blank" className="flex flex-col items-center gap-2">
-              <center><img src="src/public/logo.svg" width={40} height={40}/></center>
+              <LogoIcon/>
               <span className="font-medium text-sm">ServerPeek</span>
           </a>
           <CardTitle className="text-xl">Setup the server</CardTitle>

@@ -1,3 +1,4 @@
+import { LogoIcon } from "@/components/LogoIcon";
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -18,7 +19,7 @@ export default function Custom404({ statusCode, error }: Props) {
 							target="_blank"
 							className="flex flex-row items-center gap-2"
 						>
-							<center><img src="src/public/logo.svg" width={40} height={40}/></center>
+							<LogoIcon/>
 							<span className="font-medium text-sm">ServerPeek</span>
 						</Link>
 					</nav>
@@ -49,7 +50,7 @@ export default function Custom404({ statusCode, error }: Props) {
 
 						<div className="mt-5 flex flex-col justify-center items-center gap-2 sm:flex-row sm:gap-3">
 							<Link
-								to="/dashbaord"
+								to="/dashboard"
 								className={buttonVariants({
 									variant: "secondary",
 									className: "flex flex-row gap-2",

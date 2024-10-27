@@ -1,13 +1,16 @@
+import { useTheme } from "./theme-provider"
+
 export const LogoIcon = () => {
+  const { theme } = useTheme();
   return (
-  <svg className="bg-white dark:bg-white rounded-full"  xmlns="http://www.w3.org/2000/svg"
+  <svg className="bg-white dark:bg-black rounded-full"  xmlns="http://www.w3.org/2000/svg"
   width="50" height="50" viewBox="0 0 300.000000 300.000000"
   preserveAspectRatio="xMidYMid meet">
    <metadata>
    Created by potrace 1.10, written by Peter Selinger 2001-2011
    </metadata>
    <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)"
-   fill="#000000" stroke="none">
+   fill={theme=="dark"?"#FFFFFF":"#000000"} stroke="none">
    <path d="M1330 2989 c-163 -19 -355 -76 -500 -149 -276 -139 -532 -395 -670
    -669 -213 -426 -209 -938 11 -1361 270 -519 821 -836 1399 -806 229 11 418 63
    620 167 411 212 696 598 787 1064 12 63 17 141 18 260 0 268 -40 438 -160 680
