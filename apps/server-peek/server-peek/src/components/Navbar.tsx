@@ -16,8 +16,7 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
-// import { LogoIcon } from "./Icons";
-import { LogoIcon } from './LogoIcon';
+import { LogoIcon } from "./LogoIcon";
 
 interface RouteProps {
   href: string;
@@ -55,8 +54,8 @@ export const Navbar = () => {
               href="/"
               className="ml-2 font-bold text-xl flex"
             >
-              <LogoIcon />
-              <p className="px-2">ServerPeek</p>
+              <LogoIcon/>
+              <p className="px-2 mt-3">ServerPeek</p>
             </a>
           </NavigationMenuItem>
 
