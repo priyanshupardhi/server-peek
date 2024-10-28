@@ -1,10 +1,20 @@
+import { DashboardContextType } from "@/type";
+import { useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 
 const HomePage = () => {
+
+  const { setPageTitle } = useOutletContext<DashboardContextType>();
+
+    useEffect(() => {
+      setPageTitle('Home');
+      return () => setPageTitle('Dashboard'); // Reset on unmount
+    }, [setPageTitle]);
     return (
       <>
           <nav className="mb-8">
             <ul className="flex space-x-6 border-b border-gray-800">
-              {['Events', 'Logs', 'Disks', 'Environment', 'Shell', "PR's", 'Jobs', 'Metrics', 'Scaling', 'Settings'].map((item) => (
+              {['Events', 'Logs', 'Disks', 'Environment', 'Shell',  'Jobs', 'Metrics', 'Scaling', 'Settings'].map((item) => (
                 <li key={item}>
                   <a href="#" className={`pb-2 px-1 inline-block ${item === 'Metrics' ? 'text-green-500 border-b-2 border-green-500' : 'text-gray-400 hover:text-white'}`}>
                     {item}

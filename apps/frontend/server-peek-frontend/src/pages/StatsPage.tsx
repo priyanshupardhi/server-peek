@@ -16,8 +16,12 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+import { useOutletContext } from "react-router-dom"
+import { DashboardContextType } from "@/type"
 
 export const description = "An interactive line chart"
+
+    
 
 const chartData = [
   { date: "2024-04-01", desktop: 222, mobile: 150 },
@@ -128,6 +132,15 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function StatsPage() {
+
+  const { setPageTitle } = useOutletContext<DashboardContextType>();
+
+    React.useEffect(() => {
+      setPageTitle('Matrix');
+      return () => setPageTitle('Dashboard'); // Reset on unmount
+    }, [setPageTitle]);
+
+
   const [activeChart, setActiveChart] =
     React.useState<keyof typeof chartConfig>("desktop")
 
