@@ -5,16 +5,28 @@ import { useOutletContext } from "react-router-dom";
 const HomePage = () => {
 
   const { setPageTitle } = useOutletContext<DashboardContextType>();
-
+  const menuItems = ['Events', 'Logs', 'Disks', 'Environment', 'Shell', 'Jobs', 'Metrics', 'Settings'];
     useEffect(() => {
       setPageTitle('Home');
-      return () => setPageTitle('Dashboard'); // Reset on unmount
+      return () => setPageTitle('Dashboard');
     }, [setPageTitle]);
     return (
       <>
           <nav className="mb-8">
-            <ul className="flex space-x-6 border-b border-gray-800">
-              {['Events', 'Logs', 'Disks', 'Environment', 'Shell',  'Jobs', 'Metrics', 'Scaling', 'Settings'].map((item) => (
+            {/* Mobile Menu */}
+            <div className="block lg:hidden">
+              <select className="w-full text-white border-gray-800 rounded-md py-2 px-4">
+                {menuItems.map((item) => (
+                  <option key={item} value={item} className={item === 'Metrics' ? 'text-green-500' : ''}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Desktop Menu */}
+            <ul className="hidden lg:flex space-x-6 border-b border-gray-800">
+              {menuItems.map((item) => (
                 <li key={item}>
                   <a href="#" className={`pb-2 px-1 inline-block ${item === 'Metrics' ? 'text-green-500 border-b-2 border-green-500' : 'text-gray-400 hover:text-white'}`}>
                     {item}
