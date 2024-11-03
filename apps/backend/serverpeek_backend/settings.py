@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from datetime import timedelta
 import environ
 import os
 
@@ -46,6 +47,7 @@ BUILT_IN_APPS = [
 THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
 ]
 
 USER_DEFINED_APPS = [
@@ -57,6 +59,8 @@ INSTALLED_APPS = BUILT_IN_APPS + THIRD_PARTY_APPS + USER_DEFINED_APPS
 
 BUILT_IN_MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # cors header
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -150,7 +154,63 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+
+    'SEARCH_PARAM': 'search',
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+
+    # API Versioning.
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
+
+    # Authentication.
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ],
+
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
+    # DateTime formatting
+    'DATETIME_FORMAT': '%d/%m/%Y, %I:%M %p',
+    'DATE_FORMAT': '%d %B %Y',
+
+    # Throttle Settings
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',
+        'user': '100/min'
+    }
+
+}
+
+from corsheaders.defaults import default_headers
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'token',
+    'otp-token',
+    'cancelToken',
+    'permissions',
+]
+CORS_EXPOSE_HEADERS = [
+    'token',
+    'otp-token',
+    'cancelToken',
+    'permissions',
+]
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'DELETE',
+    'PUT',
+    'PATCH'
+)
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
 }
