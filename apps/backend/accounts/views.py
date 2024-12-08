@@ -27,7 +27,7 @@ class UserViewSet(viewsets.ModelViewSet):
             detail=False, 
             url_path='register',
             methods=['post'])
-    def register(self, request):
+    def register(self, request, *args, **kwargs):
         """
         Register a new user.
         """
@@ -63,7 +63,7 @@ class UserViewSet(viewsets.ModelViewSet):
             detail=False, 
             url_path='login',
             methods=['post'])
-    def login(self, request):
+    def login(self, request, *args, **kwargs):
         """
         Authenticate a user and return tokens.
         """
@@ -97,7 +97,7 @@ class UserViewSet(viewsets.ModelViewSet):
             detail=False, 
             url_path='change-password',
             methods=['post'], permission_classes=[permissions.IsAuthenticated])
-    def change_password(self, request):
+    def change_password(self, request, *args, **kwargs):
         """
         Change password for authenticated user.
         """
